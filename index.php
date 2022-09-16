@@ -1,3 +1,109 @@
+<?php
+
+class Student {
+    // --------------------------
+    // Statics
+    // --------------------------
+
+    private static string $dateFormat = "Y-m-d";
+    private static string $introduction = "Bonjour, je m'appelle ##firstname## ##lastname##, j'ai ##age## ans et je vais à l'école ##school## en class de ##grade##.";
+
+    public static function getDateFormat():string {
+        return self::$dateFormat;
+    }
+    public static function setDateFormat(string $dateFormat):void {
+        self::$dateFormat = $dateFormat;
+    }
+
+    public static function getIntroduction():string {
+        return self::$introduction;
+    }
+    public static function setIntroduction(string $introduction):void {
+        self::$introduction = $introduction;
+    }
+
+
+
+    // --------------------------
+    // Instances
+    // --------------------------
+
+    private string $lastname;
+    private string $firstname;
+    private DateTime $birthdate;
+    private string $grade;
+    private string $school;
+
+    public function __construct(string $lastname, string $firstname, DateTime $birthdate, string $grade) {
+        $this->lastname = $lastname;
+        $this->firstname = $firstname;
+        $this->birthdate = $birthdate;
+        $this->grade = $grade;
+        $this->school = "";
+    }
+
+    // Getters and Setters
+
+    public function getLastname():string {
+        return $this->lastname;
+    }
+    public function setLastname(string $lastname):void {
+        $this->lastname = $lastname;
+    }
+
+    public function getFirstname():string {
+        return $this->firstname;
+    }
+    public function setFirstname(string $firstname):void {
+        $this->firstname = $firstname;
+    }
+
+    public function getGrade():string {
+        return $this->grade;
+    }
+    public function setGrade(string $grade):void {
+        $this->grade = $grade;
+    }
+
+    public function getBirthdate():DateTime {
+        return $this->birthdate;
+    }
+    public function setBirthdate(DateTime $birthdate):void {
+        $this->birthdate = $birthdate;
+    }
+
+    public function getSchool():string {
+        return $this->school;
+    }
+    public function setSchool(string $school):void {
+        $this->school = $school;
+    }
+
+    // Methods
+
+    public function showBirthdate():string {
+        return $this->getBirthdate()->format(self::getDateFormat());
+    }
+
+    public function getAge():int {
+        // return $this->birthdate->diff(new DateTime())->format("%y");
+        return $this->birthdate->diff(new DateTime())->y;
+    }
+
+    public function introduceMySelf():string {
+        $search = [
+            "firstname" => $this->getFirstname(),
+            "lastname" => $this->getLastname(),
+            "age" => $this->getAge(),
+            "school" => $this->getSchool(),
+            "grade" => $this->getGrade()
+        ];
+        return str_replace(array_map(fn($s)=>"##$s##", array_keys($search)), array_values($search), self::getIntroduction());
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +142,13 @@
                 Créer 2 étudiants différents.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+
+            $samir = new Student("Damoui", "Samir", new DateTime("2006-08-11"), "1ère");
+            $sophie = new Student("Lunima", "Sophie", new DateTime("2010-05-12"), "5ème");
+
+            var_dump($samir, $sophie);
+            ?>
             </div>
         </section>
         
@@ -49,7 +161,14 @@
                 Modifier le niveau scolaire des 2 élèves et les afficher.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+
+            $samir->setGrade("2nde");
+            $sophie->setGrade("4ème");
+            echo $samir->getFirstname()." : ".$samir->getGrade()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->getGrade();
+
+            ?>
             </div>
         </section>
         
@@ -62,7 +181,19 @@
                 Mettez à jour l'instanciation des 2 élèves et afficher leur date de naissance.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+            // echo $samir->getBirthdate()->format("l j F Y")."<br>";
+            // echo $sophie->getBirthdate()->format("l j F Y");
+
+            echo $samir->getFirstname()." : ".$samir->showBirthdate()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->showBirthdate()."<br>";
+
+            Student::setDateFormat("l j F Y");
+
+            echo $samir->getFirstname()." : ".$samir->showBirthdate()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->showBirthdate()."<br>";
+
+            ?>
             </div>
         </section>
         
@@ -75,7 +206,12 @@
                 Afficher l'âge des 2 élèves.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+
+            echo $samir->getFirstname()." : ".$samir->getAge()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->getAge()."<br>";
+
+            ?>
             </div>
         </section>
         
@@ -88,7 +224,14 @@
                 Ajouter la propriété et ajouter la donnée sur les élèves.
             </p>
             <div class="exercice-sandbox">
-                
+            <?php
+
+            $samir->setSchool("Ecole André Malraux");
+            $sophie->setSchool("Ecole Saint Charles");
+
+            echo $samir->getFirstname()." : ".$samir->getSchool()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->getSchool()."<br>";
+            ?>
             </div>
         </section>
         
@@ -102,7 +245,10 @@
                 Afficher la phrase de présentation des 2 élèves.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    echo $samir->introduceMySelf()."<br>";
+                    echo $sophie->introduceMySelf()."<br>";
+                ?>
             </div>
         </section>
 
