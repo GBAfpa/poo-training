@@ -148,6 +148,12 @@ use App\Objects\Student;
                 <?php
                     echo $samir->introduceMySelf()."<br>";
                     echo $sophie->introduceMySelf()."<br>";
+
+                    Student::setIntroduction("Yo, moi c'est ##firstname## ##lastname##, j'ai ##age## ans et je vais à ##school## et je suis en ##grade##.");
+
+                    echo $samir->introduceMySelf()."<br>";
+
+
                 ?>
             </div>
         </section>
