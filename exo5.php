@@ -29,7 +29,7 @@
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt"> 
-                Créer une classe permettant de gérer l'affichage d'un template HTML en lisant un fichier grace à la foncton file_get_contents(). 
+                Créer une classe permettant de gérer l'affichage d'un template HTML en lisant un fichier grace à la fonction file_get_contents(). 
             </p>
             <div class="exercice-sandbox">
                 
