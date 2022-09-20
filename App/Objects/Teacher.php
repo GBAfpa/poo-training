@@ -14,9 +14,8 @@ class Teacher extends Person {
     // Instances
     // --------------------------
     public array $subjects;
-    public string $school;
 
-    public function __construct(string $lastname, string $firstname, array $subjects = [], string $school = "") {
+    public function __construct(string $lastname, string $firstname, array $subjects = [], ?School $school = null) {
         parent::__construct($firstname, $lastname, $school);
         $this->subjects = $subjects;
     }
@@ -51,7 +50,7 @@ class Teacher extends Person {
             'lastname' => $this->getLastname(),
             'firstname' => $this->getFirstname(),
             'subjects' => $this->getSubjectsToString(),
-            'school' => $this->getSchool()
+            'school' => $this->getSchool()->getName()
         ]);
     }
 }

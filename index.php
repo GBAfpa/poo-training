@@ -2,6 +2,8 @@
 spl_autoload_register();
 
 use App\Objects\Student;
+use App\Objects\HighSchool;
+use App\Objects\SecondarySchool;
 
 ?>
 <!DOCTYPE html>
@@ -126,11 +128,11 @@ use App\Objects\Student;
             <div class="exercice-sandbox">
             <?php
 
-            $samir->setSchool("Ecole André Malraux");
-            $sophie->setSchool("Ecole Saint Charles");
+            $samir->setSchool(new HighSchool("Ecole André Malraux", "Bordeaux"));
+            $sophie->setSchool(new SecondarySchool("Ecole Saint Charles", "Pau"));
 
-            echo $samir->getFirstname()." : ".$samir->getSchool()."<br>";
-            echo $sophie->getFirstname()." : ".$sophie->getSchool()."<br>";
+            echo $samir->getFirstname()." : ".$samir->getSchool()->getName()."<br>";
+            echo $sophie->getFirstname()." : ".$sophie->getSchool()->getName()."<br>";
             ?>
             </div>
         </section>

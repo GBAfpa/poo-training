@@ -1,6 +1,9 @@
 <?php
 spl_autoload_register();
 
+use App\Objects\ElementarySchool;
+use App\Objects\HighSchool;
+use App\Objects\SecondarySchool;
 use App\Objects\Teacher;
 
 ?>
@@ -45,7 +48,7 @@ use App\Objects\Teacher;
                 <?php
 
                 $paul = new Teacher("Mourin", "Paul");
-                $elise = new Teacher("Sdiam", "Elise", ["Mathémtiques"], "Ecole Saint Exupéry");
+                $elise = new Teacher("Sdiam", "Elise", ["Mathématiques"], new ElementarySchool("Ecole Saint Exupéry", "Hazebrook"));
 
                 var_dump($paul, $elise);
                 ?>
@@ -65,11 +68,11 @@ use App\Objects\Teacher;
             </p>
             <div class="exercice-sandbox">
             <?php
-            $paul->setSchool("Ecole Sainte Julie");
-            $elise->setSchool("Ecole Trucmuche");
+            $paul->setSchool(new SecondarySchool("Ecole Sainte Julie", "Quebec"));
+            $elise->setSchool(new HighSchool("Ecole Trucmuche", "Lyon"));
 
-            echo $paul->getFirstname()." : ".$paul->getSchool()."<br>"; 
-            echo $elise->getFirstname()." : ".$elise->getSchool()."<br>"; 
+            echo $paul->getFirstname()." : ".$paul->getSchool()->getName()."<br>"; 
+            echo $elise->getFirstname()." : ".$elise->getSchool()->getName()."<br>"; 
             ?>
             </div>
         </section>

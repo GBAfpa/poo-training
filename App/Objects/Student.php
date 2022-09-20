@@ -28,7 +28,7 @@ class Student extends Person {
     private string $grade;
 
     public function __construct(string $lastname, string $firstname, DateTime $birthdate, string $grade) {
-        parent::__construct($firstname, $lastname, "");
+        parent::__construct($firstname, $lastname);
         $this->birthdate = $birthdate;
         $this->grade = $grade;
     }
@@ -65,7 +65,7 @@ class Student extends Person {
             'firstname' => $this->getFirstname(),
             'lastname' => $this->getLastname(),
             'age' => $this->getAge(),
-            'school' => $this->getSchool(),
+            'school' => $this->getSchool()->getName(),
             'grade' => $this->getGrade()
         ]);
     }

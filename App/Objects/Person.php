@@ -30,9 +30,9 @@ abstract class Person {
     // --------------------------
     private string $lastname;
     private string $firstname;
-    private string $school;
+    private ?School $school;
 
-    public function __construct(string $firstname, string $lastname, string $school) {
+    public function __construct(string $firstname, string $lastname, ?School $school = null) {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->school = $school;
@@ -54,10 +54,10 @@ abstract class Person {
         $this->firstname = $firstname;
     }
 
-    public function getSchool():string {
+    public function getSchool():School {
         return $this->school;
     }
-    public function setSchool(string $school):void {
+    public function setSchool(School $school):void {
         $this->school = $school;
     }
 }
