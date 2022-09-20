@@ -10,7 +10,7 @@ class Student extends Person {
     // --------------------------
 
     private static string $dateFormat = "Y-m-d";
-    protected static string $introduction = "Bonjour, je m'appelle ##firstname## ##lastname##, j'ai ##age## ans et je vais à l'école ##school## en class de ##grade##.";
+    protected static string $introduction = "Bonjour, je m'appelle ##firstname## ##lastname##, j'ai ##age## ans et je vais à l'école ##school## en classe de ##grade##.";
 
     public static function getDateFormat():string {
         return self::$dateFormat;

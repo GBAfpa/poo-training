@@ -1,3 +1,12 @@
+<?php
+spl_autoload_register();
+
+use App\Objects\School;
+use App\Objects\HighSchool;
+use App\Objects\ElementarySchool;
+use App\Objects\SecondarySchool;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +43,12 @@
                 Créer 2 écoles et afficher leurs proprités.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                $saintBernard = new School("Ecole Saint Bernard", "Arras");
+                $saintOwl = new School("Ecole Saint Owl", "Marseille");
+
+                var_dump($saintBernard, $saintOwl);
+                ?>
             </div>
         </section>
         
@@ -50,7 +64,18 @@
                 Créer une école de chaque type.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                $marcelPagnol = new HighSchool("Lycée Marcel Pagnol", "Athis-Mons");
+                $robespierre = new ElementarySchool("Ecole Robespierre", "Le Havre");
+                $henriWallon = new SecondarySchool("Ecole Henri Wallon", "Le Havre");
+
+                var_dump(
+                    $marcelPagnol->getGrades(),
+                    $robespierre->getGrades(),
+                    $henriWallon->getGrades(),
+                );
+                ?>
             </div>
         </section>
 
