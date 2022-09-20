@@ -4,6 +4,34 @@ spl_autoload_register();
 use App\Objects\Student;
 use App\Objects\HighSchool;
 use App\Objects\SecondarySchool;
+use App\Views\Question;
+use App\Views\Page;
+
+
+$pageContent = '';
+
+
+$samir = new Student("Damoui", "Samir", new DateTime("2006-08-11"), "1ère");
+$sophie = new Student("Lunima", "Sophie", new DateTime("2010-05-12"), "5ème");
+
+$q1 = new Question([
+    'number' => 1,
+    'question' => "Créer une classe permettant de créer des élèves ayant un nom, un prénom, un age et un niveau scolaire.
+    Définir toutes les propriétés à l'instanciation.
+    Créer 2 étudiants différents.",
+    'answer' => '',
+]);
+$pageContent .= $q1->getHtml();
+
+$view = new Page([
+    'title' => 'POO - Des élèves',
+    'headerTitle' => 'Programmation Orientée Objet - Des élèves',
+    'content' => $pageContent
+]);
+
+$view->display();
+
+exit;
 
 ?>
 <!DOCTYPE html>
