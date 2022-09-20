@@ -1,3 +1,40 @@
+<?php
+spl_autoload_register();
+
+// use App\Views\View;
+use App\Views\Question;
+use App\Views\Page;
+
+
+$pageContent = '';
+
+$q1 = new Question([
+    'number' => 1,
+    'question' => "Créer une classe permettant de gérer l'affichage d'un template HTML en lisant un fichier grace à la fonction file_get_contents(). ",
+    'answer' => ''
+]);
+$pageContent .= $q1->getHtml();
+
+
+$q2 = new Question([
+    'number' => 2,
+    'question' => "Créer une classe permettant de gérer l'affichage des pages de ce mini-site.",
+    'answer' => ''
+]);
+$pageContent .= $q2->getHtml();
+
+
+$view = new Page([
+    'title' => 'POO - Des vues',
+    'headerTitle' => 'POO - Des vues',
+    'content' => $pageContent
+]);
+
+$view->display();
+
+exit;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +45,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>POO - Des vues</title>
-</head>
+</head> 
 
 <body class="dark-template">
     <div class="container">
@@ -32,7 +69,6 @@
                 Créer une classe permettant de gérer l'affichage d'un template HTML en lisant un fichier grace à la fonction file_get_contents(). 
             </p>
             <div class="exercice-sandbox">
-                
             </div>
         </section>
         
@@ -40,7 +76,7 @@
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt"> 
-                Créer une classe permettant de gérer l'affichage des pages de ce mini-site.
+                
             </p>
             <div class="exercice-sandbox">
                 
@@ -68,6 +104,8 @@
                 
             </div>
         </section>
+
+
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2022 - DWWM Le Havre</div>
 </body>
