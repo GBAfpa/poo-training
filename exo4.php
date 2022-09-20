@@ -89,7 +89,13 @@ use App\Objects\SecondarySchool;
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                var_dump(
+                    $marcelPagnol->haveGrade("CE1"),
+                    $robespierre->haveGrade("CE1"),
+                    $henriWallon->haveGrade("CE1"),
+                );
+                ?>
             </div>
         </section>
 

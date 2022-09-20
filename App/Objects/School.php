@@ -6,10 +6,8 @@ class School {
     // -----------
     // Static
     // -----------
-    
+
     protected static array $grades = [];
-
-
 
     // -----------
     // Instances
@@ -21,6 +19,8 @@ class School {
         $this->name = $name;
         $this->town = $town;
     }
+
+    // Getters & Setters 
 
     public function getName():string {
         return $this->name;
@@ -40,5 +40,14 @@ class School {
 
     public function getGrades():array {
         return static::$grades;
+    }
+
+    // Methods 
+
+    public function haveGrade(string $grade):string{
+        if (in_array($grade,static::$grades)) {
+            return "oui on a la classe";
+        }
+        return "ou on ne l'a pas";
     }
 }
